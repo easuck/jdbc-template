@@ -1,5 +1,9 @@
 package com.example.jdbctemplate.Configuration;
 
+import com.example.jdbctemplate.Commands.AddCommand;
+import com.example.jdbctemplate.DAO.PersonDAO;
+import com.example.jdbctemplate.Utility.CommandsManager;
+import com.example.jdbctemplate.Utility.UserInput;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -26,4 +30,27 @@ public class SpringConfig {
     public JdbcTemplate jdbcTemplate(){
         return new JdbcTemplate(dataSource());
     }
+
+    @Bean
+    public UserInput userInput(){
+        return new UserInput();
+    }
+
+    @Bean
+    public PersonDAO personDAO(){
+        return new PersonDAO(jdbcTemplate());
+    }
+
+    @Bean
+    public AddCommand addCommand(){
+        return new AddCommand(personDAO(), userInput());
+    }
+
+    @Bean
+    public CommandsManager commandsManager(){
+        return new CommandsManager(addCommand());
+    }
+
+
+
 }

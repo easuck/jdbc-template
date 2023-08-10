@@ -4,6 +4,7 @@ import com.example.jdbctemplate.Configuration.SpringConfig;
 import com.example.jdbctemplate.DAO.PersonDAO;
 import com.example.jdbctemplate.Entity.Kid;
 import com.example.jdbctemplate.Entity.Person;
+import com.example.jdbctemplate.Utility.CommandsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,17 +18,12 @@ import java.util.List;
 
 public class JdbcTemplateApplication {
 
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(JdbcTemplateApplication.class, args);
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-		PersonDAO personDAO = context.getBean("personDAO", PersonDAO.class);
-		List<Person> persons = personDAO.index();
-		for(Person person : persons){
-			System.out.println(person);
-		}
+		CommandsManager commandsManager = context.getBean("commandsManager", CommandsManager.class);
+		commandsManager.doCommands();
 	}
 
 }

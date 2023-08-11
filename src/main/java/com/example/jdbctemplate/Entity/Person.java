@@ -7,6 +7,7 @@ public abstract class Person implements Nameable, Ageable {
 
     private String name;
     private int age;
+    private int id;
 
     public Person(String name, int age) {
         this.name = name;
@@ -29,6 +30,14 @@ public abstract class Person implements Nameable, Ageable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

@@ -32,9 +32,8 @@ public class PersonDAO {
         }
     }
 
-    public void delete(int id){
-        jdbcTemplate.update("delete from persons where id=?", id);
+    public boolean delete(int id){
+        return jdbcTemplate.update("delete from persons where id=?", id) != 0;
+
     }
-
-
 }

@@ -32,6 +32,7 @@ public class Kid extends Person implements Gradeable {
                 "name=" + getName() +
                 ", age=" + getAge() +
                 ", grade=" + grade +
+                ", id=" + getId() +
                 '}';
     }
 }

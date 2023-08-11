@@ -1,6 +1,8 @@
 package com.example.jdbctemplate.Configuration;
 
 import com.example.jdbctemplate.Commands.AddCommand;
+import com.example.jdbctemplate.Commands.DeleteCommand;
+import com.example.jdbctemplate.Commands.ShowCommand;
 import com.example.jdbctemplate.DAO.PersonDAO;
 import com.example.jdbctemplate.Utility.CommandsManager;
 import com.example.jdbctemplate.Utility.UserInput;
@@ -47,8 +49,18 @@ public class SpringConfig {
     }
 
     @Bean
+    public ShowCommand showCommand(){
+        return new ShowCommand(personDAO());
+    }
+
+    @Bean
+    public DeleteCommand deleteCommand(){
+        return new DeleteCommand(personDAO(), userInput());
+    }
+
+    @Bean
     public CommandsManager commandsManager(){
-        return new CommandsManager(addCommand());
+        return new CommandsManager(addCommand(), showCommand(), deleteCommand());
     }
 
 

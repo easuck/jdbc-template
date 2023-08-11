@@ -17,6 +17,7 @@ public class PersonRowMapper implements RowMapper {
             adult.setName(rs.getString("name"));
             adult.setAge(rs.getInt("age"));
             adult.setJob(rs.getString("job"));
+            adult.setId(rs.getInt("id"));
             return adult;
         }
         else{
@@ -24,6 +25,7 @@ public class PersonRowMapper implements RowMapper {
             kid.setName(rs.getString("name"));
             kid.setAge(rs.getInt("age"));
             kid.setGrade(rs.getInt("grade"));
+            kid.setId(rs.getInt("id"));
             return kid;
         }
     }

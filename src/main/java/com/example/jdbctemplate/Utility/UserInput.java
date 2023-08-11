@@ -113,4 +113,24 @@ public class UserInput {
             return kid;
         }
     }
+
+    public int inputId(){
+        Optional<Integer> id;
+        while(true){
+            try{
+                System.out.print("enter id of entity you want to delete: ");
+                if(scanner.hasNext()){
+                    id = Optional.of(Integer.parseInt(scanner.nextLine()));
+                    break;
+                }
+            }
+            catch(NumberFormatException e){
+                System.out.println("id must be a number");
+            }
+            /*catch(Exception e){
+                System.out.println("id can't be empty");
+            }*/
+        }
+        return id.get();
+    }
 }

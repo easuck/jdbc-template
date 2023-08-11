@@ -2,6 +2,8 @@ package com.example.jdbctemplate.Utility;
 
 import com.example.jdbctemplate.Commands.AddCommand;
 import com.example.jdbctemplate.Commands.Command;
+import com.example.jdbctemplate.Commands.DeleteCommand;
+import com.example.jdbctemplate.Commands.ShowCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +17,12 @@ public class CommandsManager {
     private Scanner scanner;
 
     @Autowired
-    public CommandsManager(AddCommand addCommand){
+    public CommandsManager(AddCommand addCommand, ShowCommand showCommand, DeleteCommand deleteCommand){
         commands = new HashMap<>();
         scanner = new Scanner(System.in);
         commands.put("add", addCommand);
+        commands.put("show", showCommand);
+        commands.put("delete", deleteCommand);
     }
 
     public void doCommands(){

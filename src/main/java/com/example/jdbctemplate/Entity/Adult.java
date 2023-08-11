@@ -32,6 +32,7 @@ public class Adult extends Person implements Jobable {
                 "name=" + getName() +
                 ", age=" + getAge() +
                 ", job=" + job +
+                ", id=" + getId() +
                 '}';
     }
 }
